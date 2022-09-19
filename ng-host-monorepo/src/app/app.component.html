@@ -1,0 +1,41 @@
+<header class="header-7">
+  <div class="branding">
+    <a href="..." class="nav-link">
+      <clr-icon shape="vm-bug"></clr-icon>
+      <span class="title">Micro Frontend Example</span>
+    </a>
+  </div>
+  <div class="header-nav">
+    <a
+      (click)="navigate('mfe01')"
+      [ngClass]="{ active: activeTab === 'mfe01' }"
+      class="nav-link nav-text"
+      >Library 01</a
+    >
+    <a
+      (click)="navigate('mfe02')"
+      [ngClass]="{ active: activeTab === 'mfe02' }"
+      class="nav-link nav-text"
+      >Library 02</a
+    >
+    <a
+      (click)="navigate('/remote01/users')"
+      [ngClass]="{ active: activeTab === '/remote01/users' }"
+      class="nav-link nav-text"
+      >Remote Clarity Application</a
+    >
+    <a
+      (click)="navigate('/remote02/dashboard')"
+      [ngClass]="{ active: activeTab === '/remote02/dashboard' }"
+      class="nav-link nav-text"
+      >Remote Material Application</a
+    >
+  </div>
+</header>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
