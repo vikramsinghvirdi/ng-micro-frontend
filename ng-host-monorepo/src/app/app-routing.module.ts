@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { Mfe01Component } from 'mfe01';
 import { Mfe02Component } from 'mfe02';
 import {
+  startsWith,
   WebComponentWrapper,
   WebComponentWrapperOptions,
 } from '@angular-architects/module-federation-tools';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -30,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('remote02/Module').then(m => m.DashboardModule)
   },
   {
-    path: 'remote03',
+    matcher: startsWith('remote03'),
     component: WebComponentWrapper,
     data: {
       type: 'script',
@@ -38,6 +40,17 @@ const routes: Routes = [
       remoteName: 'remote03',
       exposedModule: './web-components',
       elementName: 'remote03-element'
+    } as WebComponentWrapperOptions
+  },
+  {
+    matcher: startsWith('angular3'),
+    component: WebComponentWrapper,
+    data: {
+      remoteEntry: 'https://gray-river-0b8c23a10.azurestaticapps.net/remoteEntry.js',
+      // remoteEntry: 'http://localhost:4202/remoteEntry.js',
+      remoteName: 'angular3',
+      exposedModule: './web-components',
+      elementName: 'angular3-element'
     } as WebComponentWrapperOptions
   },
   {
@@ -52,6 +65,10 @@ const routes: Routes = [
       elementName: 'react-element',
     } as WebComponentWrapperOptions,
   },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({

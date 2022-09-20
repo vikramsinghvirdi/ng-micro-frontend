@@ -4,56 +4,79 @@ const path = require("path");
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
+  /* mapped paths to share */
+]);
 
 module.exports = {
   output: {
     uniqueName: "remote03",
-    publicPath: "auto"
+    publicPath: "auto",
   },
   optimization: {
-    runtimeChunk: false
+    runtimeChunk: false,
   },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
-    }
+    },
   },
   plugins: [
     new ModuleFederationPlugin({
+      // For remotes (please adjust)
+      name: "remote03",
+      library: { type: "var", name: "remote03" },
+      filename: "remoteEntry.js",
+      exposes: {
+        "./web-components": "./src/bootstrap.ts",
+      },
 
-        // For remotes (please adjust)
-        name: "remote03",
-        library: { type: "var", name: "remote03" },
-        filename: "remoteEntry.js",
-        exposes: {
-            './web-components': './src/bootstrap.ts',
+      // For hosts (please adjust)
+      // remotes: {
+      //     "mfe1": "mfe1@http://localhost:3000/remoteEntry.js",
+
+      // },
+
+      shared: share({
+        "@angular/core": { requiredVersion: "auto" },
+        "@angular/common": { requiredVersion: "auto" },
+        "@angular/router": { requiredVersion: "auto" },
+        rxjs: { requiredVersion: "auto" },
+        "@angular/common/http": { requiredVersion: "auto" },
+        "@cds/angular": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@cds/core": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@clr/angular": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@clr/core": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@clr/icons": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@clr/ui": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
         },
 
-        // For hosts (please adjust)
-        // remotes: {
-        //     "mfe1": "mfe1@http://localhost:3000/remoteEntry.js",
-
-        // },
-
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@cds/angular": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@cds/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@clr/angular": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@clr/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@clr/icons": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@clr/ui": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
-
+        ...sharedMappings.getDescriptors(),
+      }),
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
   ],
 };

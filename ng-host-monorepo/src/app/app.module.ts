@@ -1,15 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NgZone } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Mfe01Module } from 'mfe01';
 import { Mfe02Module } from 'mfe02';
 import { ClarityModule } from '@clr/angular';
+import { ModuleFederationToolsModule } from '@angular-architects/module-federation-tools';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -17,9 +20,19 @@ import { ClarityModule } from '@clr/angular';
     BrowserAnimationsModule,
     ClarityModule,
     Mfe01Module,
-    Mfe02Module
+    Mfe02Module,
+    ModuleFederationToolsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  // Even if we just load Zone.js once, we get several Zone.js instances:
+  // One for the shell and one per each Micro Frontend. To fix this problem we will
+  // share one Zone.js instance. For this, the shell is grabbing the current NgZone instance
+  // and puts it into the global namespace. All the Micro Frontends take it from there and reuse it when bootstrapping.
+  constructor(private ngZone: NgZone) {
+    (window as any).ngZone = this.ngZone;
+  }
+}

@@ -1,29 +1,39 @@
-import { FormComponent } from './shared/form/form.component';
-import { SharedModule } from './shared/shared.module';
+import { ClrInputModule, ClrSelectModule, ClarityModule, ClrIconModule, ClrFormsModule } from '@clr/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './form/form.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { Injector, NgModule } from '@angular/core';
+import { Injector, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { createCustomElement } from '@angular/elements';
-import { DatagridComponent } from './shared/components/datagrid/datagrid.component';
+import { DatagridComponent } from './datagrid/datagrid.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    AppComponent
+    AppComponent,
+    FormComponent,
+    DatagridComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
-    RouterModule
+    ClarityModule,
+    ClrIconModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ClrInputModule,
+    ClrFormsModule,
+    ClrSelectModule
+  ],
+  exports: [
+    FormComponent,
+    DatagridComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
   constructor(private injector: Injector) {
