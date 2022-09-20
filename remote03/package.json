@@ -8,7 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "postinstall:bak": "",
+    "postinstall": "ngcc",
+    "build:externals": "ng build --extra-webpack-config /webpack.externals.js --prod --single-bundle",
+    "build:remote03:externals": "ng build --extra-webpack-config /webpack.externals.js --prod --project remote03 --single-bundle"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +35,9 @@
     "@clr/icons": "^5.5.3",
     "@clr/ui": "^12.4.1",
     "@webcomponents/custom-elements": "^1.5.0",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
     "i": "^0.3.7",
+    "ngx-build-plus": "^12.2.0",
     "npm": "^8.19.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
@@ -70,7 +76,6 @@
     "karma-junit-reporter": "^1.2.0",
     "karma-spec-reporter": "0.0.32",
     "ng-packagr": "^12.1.1",
-    "ngx-build-plus": "^12.2.0",
     "protractor": "~5.4.3",
     "ts-jest": "^28.0.7",
     "ts-node": "7.0.1",

@@ -38,11 +38,26 @@ module.exports = {
       // },
 
       shared: share({
-        "@angular/core": { requiredVersion: "auto" },
-        "@angular/common": { requiredVersion: "auto" },
-        "@angular/router": { requiredVersion: "auto" },
-        rxjs: { requiredVersion: "auto" },
-        "@angular/common/http": { requiredVersion: "auto" },
+        "@angular/core": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/common": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/common/http": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/router": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
         "@cds/angular": {
           singleton: true,
           strictVersion: true,

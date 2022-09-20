@@ -33,7 +33,10 @@ import { DatagridComponent } from './datagrid/datagrid.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents : [
+    AppComponent
+  ]
 })
 export class AppModule {
   constructor(private injector: Injector) {

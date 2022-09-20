@@ -4,13 +4,13 @@ const path = require("path");
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
+sharedMappings.register(path.join(__dirname, "../../tsconfig.json"), [
   /* mapped paths to share */
 ]);
 
 module.exports = {
   output: {
-    uniqueName: "ngHostMonorepo",
+    uniqueName: "mfe02",
     publicPath: "auto",
   },
   optimization: {
@@ -24,18 +24,17 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       // For remotes (please adjust)
-      // name: "ngHostMonorepo",
-      // filename: "remoteEntry.js",
-      // exposes: {
-      //     './Component': './/src/app/app.component.ts',
-      // },
+      name: "mfe02",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Module": "./projects/mfe02/src/app/shared/shared.module.ts",
+      },
 
       // For hosts (please adjust)
-      remotes: {
-        mfe02: "mfe02@http://localhost:5100/remoteEntry.js",
-        remote01: "remote01@http://localhost:3000/remoteEntry.js",
-        remote02: "remote02@http://localhost:3200/remoteEntry.js",
-      },
+      // remotes: {
+      //     "ngHostMonorepo": "ngHostMonorepo@http://localhost:5000/remoteEntry.js",
+
+      // },
 
       shared: share({
         "@angular/core": {

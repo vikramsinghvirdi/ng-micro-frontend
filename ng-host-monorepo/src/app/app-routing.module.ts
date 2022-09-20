@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Mfe01Component } from 'mfe01';
-import { Mfe02Component } from 'mfe02';
 import {
   startsWith,
   WebComponentWrapper,
@@ -21,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'mfe02',
-    component: Mfe02Component
+    loadChildren: () => import('mfe02/Module').then(m => m.SharedModule)
   },
   {
     path: 'remote01',

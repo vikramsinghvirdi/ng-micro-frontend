@@ -12,10 +12,6 @@
         "dist/mfe01/mfe01",
         "dist/mfe01"
       ],
-      "mfe02": [
-        "dist/mfe02/mfe02",
-        "dist/mfe02"
-      ]
     },
     "module": "esnext",
     "moduleResolution": "node",

@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Mfe01Module } from 'mfe01';
-import { Mfe02Module } from 'mfe02';
 import { ClarityModule } from '@clr/angular';
 import { ModuleFederationToolsModule } from '@angular-architects/module-federation-tools';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -20,7 +19,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule,
     ClarityModule,
     Mfe01Module,
-    Mfe02Module,
     ModuleFederationToolsModule
   ],
   providers: [],
