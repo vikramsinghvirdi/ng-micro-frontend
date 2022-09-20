@@ -30,6 +30,18 @@
       class="nav-link nav-text"
       >Remote Material Application</a
     >
+    <a
+    (click)="navigate('/remote03')"
+    [ngClass]="{ active: activeTab === '/remote03' }"
+    class="nav-link nav-text"
+    >Remote Webcomponent Application</a
+  >
+  <a
+  (click)="navigate('/react')"
+  [ngClass]="{ active: activeTab === '/react' }"
+  class="nav-link nav-text"
+  >React App</a
+>
   </div>
 </header>
 <div class="main-container">

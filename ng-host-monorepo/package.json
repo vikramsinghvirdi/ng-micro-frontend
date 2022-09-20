@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular-architects/module-federation": "^12.5.3",
+    "@angular-architects/module-federation-tools": "^12.5.3",
     "@angular/animations": "^12.2.13",
     "@angular/common": "^12.2.13",
     "@angular/core": "^12.2.13",
@@ -28,6 +29,8 @@
     "@clr/core": "^4.0.6",
     "@clr/icons": "^5.1.1",
     "@clr/ui": "^12.4.1",
+    "i": "^0.3.7",
+    "npm": "^8.19.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.11.4"
