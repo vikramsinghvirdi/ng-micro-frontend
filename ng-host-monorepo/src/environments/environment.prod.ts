@@ -1,3 +1,6 @@
+import { microfrontends } from 'microfrontends';
+
 export const environment = {
-  production: true
-};
+	production: true,
+	microfrontends,
+}

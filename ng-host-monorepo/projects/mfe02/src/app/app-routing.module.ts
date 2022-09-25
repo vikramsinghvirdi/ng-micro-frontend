@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full'}
 ];
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

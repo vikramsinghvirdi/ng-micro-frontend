@@ -7,11 +7,13 @@ import { Mfe01Module } from 'mfe01';
 import { ClarityModule } from '@clr/angular';
 import { ModuleFederationToolsModule } from '@angular-architects/module-federation-tools';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
